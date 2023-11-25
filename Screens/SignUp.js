@@ -3,7 +3,7 @@ import { ImageBackground, StyleSheet, Text, View ,TextInput, TouchableOpacity} f
 import Button from '../component/Button';
 import { useState, useRef } from 'react';
 
-export default function Authentification(props) {
+export default function SignUp(props) {
   
   const [email, setmail]= useState("admin");
   const [password, setPassword] = useState("admin");
@@ -19,7 +19,7 @@ export default function Authentification(props) {
         borderRadius: 5,
         }}
       >
-      <Text style={styles.headerText}>Authentification</Text>
+      <Text style={styles.headerText}>Sign Up</Text>
       <TextInput
             onChangeText={(text)=> {setmail(text)}}
             onSubmitEditing={()=>{refInput2.current.focus();}}
@@ -36,14 +36,26 @@ export default function Authentification(props) {
         keyboardType={'default'}
         secureTextEntry={true}
       />
+      <TextInput
+        ref={refInput2}
+        onChangeText={(text)=>{setPassword2(text)}}
+        style={styles.inputBox}
+        placeholder={'confirm password'}
+        keyboardType={'default'}
+        secureTextEntry={true}
+      />
       <Button
         onPress={() => {
-         props.navigation.navigate("home")
-        }}>Sign in</Button>
+            props.navigation.navigate("home");
+        }}>Submit</Button>
+        <Button
+        onPress={() => {
+            props.navigation.goBack();
+        }}>Cancel</Button>
 
       <TouchableOpacity style={{width:"100%", alignItems: "flex-end", marginBottom:17, paddingRight:10}}>
         <Text 
-          onPress={()=> props.navigation.navigate("newuser")}
+          onPress={()=> alert ("create")}
           style={{color: "white", fontWeight: 600}}>
           Create new user
         </Text>
